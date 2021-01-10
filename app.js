@@ -22,9 +22,7 @@ yargs.command({
       type: "string",
     },
   },
-  handler: function (argv) {
-    console.log(`Title: ${argv.title}, Body: ${argv.body}`);
-  },
+  handler: (argv) => notes.addNotes(argv.title, argv.body),
 });
 
 // Create Remove Notes Command
@@ -70,3 +68,5 @@ yargs.parse();
 // 2. Configure a description, make it required, and for it to be a string
 // 3. log the body value in the function
 // 4. test
+
+// console.log(notes());
