@@ -22,16 +22,21 @@ yargs.command({
       type: "string",
     },
   },
-  handler: (argv) => notes.addNotes(argv.title, argv.body),
+  handler: (argv) => notes.addNote(argv.title, argv.body),
 });
 
 // Create Remove Notes Command
 yargs.command({
   command: "remove",
   describe: "Remvoe a note",
-  handler: function () {
-    console.log("Remove a note");
+  builder: {
+    title: {
+      describe: "Remove a Note",
+      demandOption: true,
+      type: "string",
+    },
   },
+  handler: (argv) => notes.removeNote(argv.title),
 });
 
 // Challenge - Add two new commands
