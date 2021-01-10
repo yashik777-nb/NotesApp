@@ -16,9 +16,9 @@ const addNote = (title, body) => {
       body: body,
     });
     saveNotes(notes);
-    console.log("New Note Added");
+    console.log(chalk.green("New Note Added"));
   } else {
-    console.log("A note title already taken");
+    console.log(chak.red("A note title already taken"));
   }
 };
 
@@ -31,6 +31,12 @@ const removeNote = (title) => {
     saveNotes(notesUpdated);
     console.log(chalk.green("Note Remmoved"));
   }
+};
+
+const listNotes = () => {
+  const notes = loadNotes();
+  console.log(chalk.green.inverse("Your Notes!"));
+  notes.forEach((note) => console.log(chalk.green(note.title)));
 };
 
 const loadNotes = () => {
@@ -52,4 +58,5 @@ module.exports = {
   getNotes: getNotes,
   addNote: addNote,
   removeNote: removeNote,
+  listNotes: listNotes,
 };

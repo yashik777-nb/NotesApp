@@ -22,7 +22,9 @@ yargs.command({
       type: "string",
     },
   },
-  handler: (argv) => notes.addNote(argv.title, argv.body),
+  handler(argv) {
+    notes.addNote(argv.title, argv.body);
+  },
 });
 
 // Create Remove Notes Command
@@ -36,7 +38,9 @@ yargs.command({
       type: "string",
     },
   },
-  handler: (argv) => notes.removeNote(argv.title),
+  handler(argv) {
+    notes.removeNote(argv.title);
+  },
 });
 
 // Challenge - Add two new commands
@@ -49,8 +53,8 @@ yargs.command({
 yargs.command({
   command: "list",
   describe: "List all the notes",
-  handler: function () {
-    console.log("List command executed");
+  handler() {
+    notes.listNotes();
   },
 });
 
@@ -58,7 +62,7 @@ yargs.command({
 yargs.command({
   command: "read",
   describe: "read the notes",
-  handler: function () {
+  handler() {
     console.log("Read all the notes");
   },
 });
